@@ -20,7 +20,7 @@ impl<'a, 'r> FromRequest<'a, 'r> for Conn{
     fn from_request(request: &'a Request<'r>) -> request::OutCome<Conn, ()>{
         let pool = request.guard::<State<Pool>>()?;
         match pool.get() {
-            Ok(connn) => OutCome::Success(Conn(conn)),
+            Ok(conn) => OutCome::Success(Conn(conn)),
             Err(_) => OutCome::Failure((Status::ServiceUnavailable, ())),
         }
     }
