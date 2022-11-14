@@ -25,3 +25,12 @@ impl<'a, 'r> FromRequest<'a, 'r> for Conn{
         }
     }
 }
+
+impl Deref for Conn {
+    type Target = PgConnection;
+
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
