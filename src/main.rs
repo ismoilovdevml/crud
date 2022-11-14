@@ -30,7 +30,7 @@ mod schema;
 fn rocket() -> rocket::Rocket {
     dotenv().ok();
 
-    
+    let database_url = env::var("DATABASE_URL").expect("set DATABAE_URL");
 
 
     let pool = db::init_pool(database_url);
