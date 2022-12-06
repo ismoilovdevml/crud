@@ -14,7 +14,7 @@ pub struct Response {
     result: bool,
 }
 
-#[post("validate_password")]
+#[post("/validate_password")]
 pub async fn validate_password(request: web::Json<Request>) -> impl Responder {
     info!("{} uchun parol tasdiqlanmoqda", request.username);
 
